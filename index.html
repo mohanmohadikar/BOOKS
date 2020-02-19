@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <body class="bg-light">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+      <title>Google Books</title>
+
+      <link rel="icon" href="asset/favicon.ico">
+      <link rel="stylesheet" href="css/style.css">
+
+      <script type="text/javascript">
+
+        window.scrollTo(0,0);
+
+      </script>
+
+  </head>
+
+  <body background="#ffffff">
+
+
+      <div class="container">
+        <h1 class="pageTitle"><span>Google</span> Books</h1>
+        <input type="text" class="typeSpace" placeholder="Search a book by typing it's ISBN to read...">
+        <a href="http://www.topshelfcomix.com/catalog/isbn-list" target="_blank">
+        <img src="asset/infoisbn.png" width="25" style="margin:-6px 0px"title="Examples for ISBN"><br><br>
+        <a href="#last"><input class="btnprimary" type="submit" value="read..."></a>
+      </div>
+
+      <div Id="viewerCanvas" style="width: 1140px; height: 700px" class="viewBook">
+
+
+      <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+
+      <script>
+        const button = document.querySelector(".btnprimary");
+        const isbn = document.querySelector(".typeSpace");
+        const auto = document.querySelector(".auto");
+
+        button.addEventListener("click",initialize);
+        isbn.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && isbn.value!="") {
+              // code for enter
+              initialize()
+            }
+        });
+
+        google.books.load({"language":"en"});
+
+        function nextStep(viewer){
+          window.setTimeout(function(){
+            viewer.nextPage()
+            nextStep(viewer);
+          },3000)
+        }
+
+        function alertNotFound(){
+          alert("Either your connection is lost or the book not found!");
+          window.scrollTo(0,0);
+        }
+
+        function initialize(){
+          window.scrollTo(0,document.body.scrollHeight);
+          var viewer = new google.books.DefaultViewer(document.getElementById("viewerCanvas"));
+          if(isbn.value!=""){
+            viewer.load("ISBN:"+isbn.value,alertNotFound);
+          }
+
+          auto.addEventListener("click",nextStep(viewer));
+        }
+
+        google.books.setOnLoadCallback(initialize);
+
+      </script>
+  </body>
+</html>

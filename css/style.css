@@ -1,0 +1,61 @@
+body{
+    background: rgba(0, 0, 0, 0.863);
+}
+
+span{ 
+    font-style: italic; 
+    font-size: 26px; 
+    color: rgb(35, 62, 152);
+    }  
+
+.container{
+    align-self: center;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 50px;
+    color: #ffffff;
+    padding: 100px;
+    margin-top: 8%;
+    margin-bottom: 10%;
+}
+
+::placeholder { 
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    opacity: 1; 
+  }
+
+input[type=text], select {
+    width: 50%;
+    height: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    padding: 12px 20px;
+    border:1px #ffffff;
+    border-radius: 50px;
+}
+
+input[type=submit] {
+    width: 70px;
+    background-color: rgb(35, 62, 152);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    padding: 5px 5px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+  } 
+
+.viewBook{
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(255, 255, 255);
+}
